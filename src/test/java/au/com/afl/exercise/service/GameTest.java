@@ -38,6 +38,17 @@ public class GameTest  {
     }
 
     @Test(expected = GameException.class)
+    public void testInitGameWithOnePlayer() throws GameException {
+        Integer numberOfPlayers = 1;
+        Integer counterLimit = 15;
+
+        Game game = new Game();
+        game.init(numberOfPlayers, counterLimit);
+
+
+    }
+
+    @Test(expected = GameException.class)
     public void testInitGameWithNegativeCounterLimit() throws GameException {
         Integer numberOfPlayers = 12;
         Integer counterLimit = -15;
@@ -101,53 +112,6 @@ public class GameTest  {
         game.init(numberOfPlayers, counterLimit);
     }
 
-    @Test
-    public void testPlayWith2Players() throws GameException {
-        Integer numberOfPlayers = 2;
-        Integer counterLimit = 1;
-
-        Game game = new Game();
-        game.init(numberOfPlayers, counterLimit);
-
-        game.play();
-
-        Assert.assertTrue(game.isGameOver());
-        Assert.assertEquals(1, game.getPlayers().size());
-
-        Assert.assertEquals(2, game.getPlayers().get(0).getId().intValue());
-    }
-
-    @Test
-    public void testPlayWith3Players() throws GameException {
-        Integer numberOfPlayers = 3;
-        Integer counterLimit = 2;
-
-        Game game = new Game();
-        game.init(numberOfPlayers, counterLimit);
-
-        game.play();
-
-        Assert.assertTrue(game.isGameOver());
-        Assert.assertEquals(1, game.getPlayers().size());
-        Assert.assertEquals(3, game.getPlayers().get(0).getId().intValue());
-
-    }
-
-    @Test
-    public void testPlayWithCounterGreaterThanPlayers() throws GameException {
-        Integer numberOfPlayers = 3;
-        Integer counterLimit = 5;
-
-        Game game = new Game();
-        game.init(numberOfPlayers, counterLimit);
-
-        game.play();
-
-        Assert.assertTrue(game.isGameOver());
-        Assert.assertEquals(1, game.getPlayers().size());
-        Assert.assertEquals(1, game.getPlayers().get(0).getId().intValue());
-
-    }
 
 
 }

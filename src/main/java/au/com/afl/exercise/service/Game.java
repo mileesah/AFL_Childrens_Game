@@ -19,12 +19,11 @@ public class Game {
     }
 
 
-
     public void init(Integer numberOfPlayers, Integer counterLimit) throws GameException {
         this.numberOfPlayers = numberOfPlayers;
         this.counterLimit = counterLimit;
 
-        if(!isNumberGreaterThanZero(numberOfPlayers) ) {
+        if(!isNumberGreaterThanZero(numberOfPlayers) || numberOfPlayers==1 ) {
             throw new GameException("Invalid Number of Players");
         }
         if( !isNumberGreaterThanZero(counterLimit) || counterLimit==numberOfPlayers){
@@ -39,30 +38,30 @@ public class Game {
 
     public void play() throws GameException {
         Integer currentCount = 0;
-
+        Iterator<Player> playerIterator =  null;
         do {
-            Iterator<Player> playerIterator = players.iterator();
+            playerIterator = players.iterator();
+
             while (playerIterator.hasNext()) {
 
                 Player player = playerIterator.next();
 
                 currentCount = player.count(currentCount);
-                System.out.println("player "+player.getId() +" is counting "+currentCount);
                 if (isPlayerOut(currentCount)) {
                     currentCount = 0;
                     System.out.println("player "+player.getId() +" is removed from the game!");
 
                     playerIterator.remove();
 
-                    if (isGameOver()) {
-                        System.out.println("player "+player.getId() +" WINS!");
-
-                        return;
+                    if(isGameOver()){
+                        break;
                     }
                 }
 
             }
         }while (!isGameOver());
+        System.out.println("player "+this.players.get(0).getId() +" WINS!");
+
     }
 
     public Boolean isGameOver(){
