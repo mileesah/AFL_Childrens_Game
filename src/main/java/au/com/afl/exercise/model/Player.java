@@ -3,6 +3,9 @@ package au.com.afl.exercise.model;
 
 import au.com.afl.exercise.exception.GameException;
 
+/**
+ * Player Model
+ */
 public class Player {
 
 
@@ -12,7 +15,15 @@ public class Player {
         this.id = id;
     }
 
+    /**
+     * Increments the currentCount
+     * @param currentCount
+     * @return currentCount +1
+     * @throws GameException if currentCount is null
+     */
     public Integer count(Integer currentCount) throws  GameException{
+
+
         if(currentCount==null){
             throw new GameException("Invalid Count");
         }

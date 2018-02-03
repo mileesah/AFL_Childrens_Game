@@ -19,6 +19,12 @@ public class Game {
     }
 
 
+    /**
+     * Method to initialize the players
+     * @param numberOfPlayers
+     * @param counterLimit
+     * @throws GameException
+     */
     public void init(Integer numberOfPlayers, Integer counterLimit) throws GameException {
         this.numberOfPlayers = numberOfPlayers;
         this.counterLimit = counterLimit;
@@ -35,7 +41,10 @@ public class Game {
     }
 
 
-
+    /**
+     * Methos to start the game
+     * @throws GameException
+     */
     public void play() throws GameException {
         Integer currentCount = 0;
         Iterator<Player> playerIterator =  null;
@@ -68,10 +77,19 @@ public class Game {
         return players.size()==1;
     }
 
+    /**
+     * Checks if the player is to be removed from the game
+     * @param currentCount
+     * @return
+     */
     private boolean isPlayerOut(Integer currentCount){
         return currentCount==this.counterLimit;
     }
 
+    /**
+     * Creates the players and assigns an id to each one
+     * @param numberOfPlayers
+     */
     private void initializePlayers(Integer numberOfPlayers){
         for (int playerCount = 0; playerCount < numberOfPlayers; playerCount++) {
             Player player = new Player(playerCount+1);
@@ -79,7 +97,11 @@ public class Game {
         }
     }
 
-
+    /**
+     * Validates if number is greater than 0
+     * @param number
+     * @return true if > 0
+     */
     private boolean isNumberGreaterThanZero(Integer number){
         if(number==null){
             return false;

@@ -1,5 +1,5 @@
 
-# Children'sGame Simulator
+# Children's Game Simulator
 
 This is a command line Java application that simulates a children's counting game
 
